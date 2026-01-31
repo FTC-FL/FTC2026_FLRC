@@ -15,7 +15,7 @@ import com.qualcomm.robotcore.hardware.Servo;
         servopos = hardwareMap.get(Servo.class, "transferservo");
 
 
-        servopos.setPosition(0.4);
+        servopos.setPosition(0.6);
     }
 
 

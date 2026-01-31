@@ -28,8 +28,11 @@ public class RobotCode extends LinearOpMode {
     @Override
     public void runOpMode() {
         Servo = new TransferServo(hardwareMap);
+        Servo.init(hardwareMap);
         bench = new IntakeTest();
+        bench.init(hardwareMap);
         Bench1 = new Outtake();
+        Bench1.init(hardwareMap);
         double drivespeed = 1;
         float forwardpos;
         float horizontalpos;
@@ -64,13 +67,13 @@ public class RobotCode extends LinearOpMode {
                 }
                 if (outtakemotorspeed == false) Bench1.setMotorSpeed(0);
                 if (outtakemotorspeed == true)
-                    Bench1.setMotorSpeed(0.6);
+                    Bench1.setMotorSpeed(-0.55);
 
                 if(gamepad1.right_bumper){
-                    Servo.setServopos(-0.4);
+                    Servo.setServopos(0.8);
                 }
                 else {
-                    Servo.setServopos(0.4);
+                    Servo.setServopos(0.7);
                 }
 
 
