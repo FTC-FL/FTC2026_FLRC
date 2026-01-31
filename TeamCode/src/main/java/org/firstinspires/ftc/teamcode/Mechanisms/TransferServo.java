@@ -12,10 +12,10 @@ import com.qualcomm.robotcore.hardware.Servo;
         init(hwMap);
     }
     public void init(HardwareMap hardwareMap) {
-        servopos = hardwareMap.get(Servo.class, "transferservo");
+        servopos = hardwareMap.get(Servo.class, "TransferServo");
 
 
-        servopos.setPosition(0.6);
+        servopos.setPosition(0.60);
     }
 
 

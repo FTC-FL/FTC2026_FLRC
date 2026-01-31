@@ -67,13 +67,13 @@ public class RobotCode extends LinearOpMode {
                 }
                 if (outtakemotorspeed == false) Bench1.setMotorSpeed(0);
                 if (outtakemotorspeed == true)
-                    Bench1.setMotorSpeed(-0.55);
+                    Bench1.setMotorSpeed(-0.58);
 
                 if(gamepad1.right_bumper){
-                    Servo.setServopos(0.8);
+                    Servo.setServopos(0.9);
                 }
                 else {
-                    Servo.setServopos(0.7);
+                    Servo.setServopos(0.60);
                 }
 
 
