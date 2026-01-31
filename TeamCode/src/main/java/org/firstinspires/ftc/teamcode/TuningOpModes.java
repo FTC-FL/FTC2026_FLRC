@@ -30,7 +30,7 @@ import java.util.List;
 
 public final class TuningOpModes {
     // TODO: change this to TankDrive.class if you're using tank
-    public static final Class<?> DRIVE_CLASS = MecanumDrive.class;
+    public static final Class<?> DRIVE_CLASS = MecanumDrive67.class;
 
     public static final String GROUP = "quickstart";
     public static final boolean DISABLED = false;
@@ -50,15 +50,15 @@ public final class TuningOpModes {
         if (DISABLED) return;
 
         DriveViewFactory dvf;
-        if (DRIVE_CLASS.equals(MecanumDrive.class)) {
+        if (DRIVE_CLASS.equals(MecanumDrive67.class)) {
             dvf = hardwareMap -> {
-                MecanumDrive md = new MecanumDrive(hardwareMap, new Pose2d(0, 0, 0));
+                MecanumDrive67 md = new MecanumDrive67(hardwareMap, new Pose2d(0, 0, 0));
 
                 List<Encoder> leftEncs = new ArrayList<>(), rightEncs = new ArrayList<>();
                 List<Encoder> parEncs = new ArrayList<>(), perpEncs = new ArrayList<>();
-                if (md.localizer instanceof MecanumDrive.DriveLocalizer) {
-                    MecanumDrive.DriveLocalizer dl = (MecanumDrive.DriveLocalizer) md.localizer;
-                    leftEncs.add(dl.FrontLeft);
+                if (md.localizer instanceof MecanumDrive67.DriveLocalizer) {
+                    MecanumDrive67.DriveLocalizer dl = (MecanumDrive67.DriveLocalizer) md.localizer;
+                    leftEncs.add(dl.Frontleft);
                     leftEncs.add(dl.BackLeft);
                     rightEncs.add(dl.FrontRight);
                     rightEncs.add(dl.BackRight);
@@ -77,10 +77,10 @@ public final class TuningOpModes {
 
                 return new DriveView(
                         DriveType.MECANUM,
-                        MecanumDrive.PARAMS.inPerTick,
-                        MecanumDrive.PARAMS.maxWheelVel,
-                        MecanumDrive.PARAMS.minProfileAccel,
-                        MecanumDrive.PARAMS.maxProfileAccel,
+                        MecanumDrive67.PARAMS.inPerTick,
+                        MecanumDrive67.PARAMS.maxWheelVel,
+                        MecanumDrive67.PARAMS.minProfileAccel,
+                        MecanumDrive67.PARAMS.maxProfileAccel,
                         hardwareMap.getAll(LynxModule.class),
 
                         Arrays.asList(
@@ -97,9 +97,9 @@ public final class TuningOpModes {
                         perpEncs,
                         md.lazyImu,
                         md.voltageSensor,
-                        () -> new MotorFeedforward(MecanumDrive.PARAMS.kS,
-                                MecanumDrive.PARAMS.kV / MecanumDrive.PARAMS.inPerTick,
-                                MecanumDrive.PARAMS.kA / MecanumDrive.PARAMS.inPerTick)
+                        () -> new MotorFeedforward(MecanumDrive67.PARAMS.kS,
+                                MecanumDrive67.PARAMS.kV / MecanumDrive67.PARAMS.inPerTick,
+                                MecanumDrive67.PARAMS.kA / MecanumDrive67.PARAMS.inPerTick)
                 );
             };
         } else if (DRIVE_CLASS.equals(TankDrive.class)) {

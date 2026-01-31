@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.Mechanisms.Outtake;
 
@@ -9,7 +10,7 @@ public class SimpleAutoClass extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        MecanumDrive drive = new MecanumDrive(hardwareMap);
+        MecanumDrive67 drive = new MecanumDrive67(hardwareMap);
 
         Outtake out = new Outtake();
 

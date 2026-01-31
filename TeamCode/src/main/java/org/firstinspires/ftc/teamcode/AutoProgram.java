@@ -11,6 +11,7 @@ import com.qualcomm.hardware.limelightvision.LLResultTypes;
 import com.qualcomm.hardware.limelightvision.Limelight3A;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.Mechanisms.IntakeTest;
@@ -29,7 +30,7 @@ public class AutoProgram extends LinearOpMode {
     @Override
     public void runOpMode() {
         Pose2d initialPose = new Pose2d(8.25, 8.5, Math.toRadians(90));
-        MecanumDrive drive = new MecanumDrive(hardwareMap, initialPose);
+        MecanumDrive67 drive = new MecanumDrive67(hardwareMap, initialPose);
 
         IntakeTest intake = new IntakeTest();
         Outtake outtake = new Outtake();
