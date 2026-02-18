@@ -51,7 +51,7 @@ public final class TuningOpModes {
 
         DriveViewFactory dvf;
         if (DRIVE_CLASS.equals(MecanumDrive67.class)) {
-            dvf = hardwareMap -> {
+            dvf =hardwareMap -> {
                 MecanumDrive67 md = new MecanumDrive67(hardwareMap, new Pose2d(0, 0, 0));
 
                 List<Encoder> leftEncs = new ArrayList<>(), rightEncs = new ArrayList<>();

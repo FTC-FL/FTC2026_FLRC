@@ -69,6 +69,10 @@ public class MecanumDrive67 {
 
     }
 
+    public DriveLocalizer createDriveLocalizer() {
+        return new DriveLocalizer();
+    }
+
     public static class Params {
         // Recommended defaults — tune later
         public double kS = 1.5;               // static friction feedforward
@@ -103,6 +107,7 @@ public class MecanumDrive67 {
         BackLeft.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
         imu = hwMap.get(IMU.class, "imu");
         voltageSensor = hwMap.voltageSensor.iterator().next();  // or get a specific one
+        localizer = createDriveLocalizer();
 
         RevHubOrientationOnRobot RevOrientation = new RevHubOrientationOnRobot(
                 RevHubOrientationOnRobot.LogoFacingDirection.RIGHT,
@@ -328,10 +333,13 @@ public class MecanumDrive67 {
         }
     }
 
-    public class DriveLocalizer {
+    public static class DriveLocalizer {
         public Encoder FrontLeft;
         public Encoder BackLeft;
         public Encoder FrontRight;
         public Encoder BackRight;
+
+        private DriveLocalizer() {
+        }
     }
 }
