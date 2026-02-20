@@ -75,7 +75,7 @@ public final class TuningOpModes {
                     throw new RuntimeException("unknown localizer: " + md.localizer.getClass().getName());
                 }
 
-                return new DriveView(
+                DriveView driveView = new DriveView(
                         DriveType.MECANUM,
                         MecanumDrive67.PARAMS.inPerTick,
                         MecanumDrive67.PARAMS.maxWheelVel,
@@ -83,14 +83,8 @@ public final class TuningOpModes {
                         MecanumDrive67.PARAMS.maxProfileAccel,
                         hardwareMap.getAll(LynxModule.class),
 
-                        Arrays.asList(
-                              md.FrontRight,
-                              md.BackRight
-                      ),
-                        Arrays.asList(
-                       md.FrontLeft,
-                       md.BackLeft
-               ),
+                        new ArrayList<>(Arrays.asList(md.FrontRight, md.BackRight)),
+                        new ArrayList<>(Arrays.asList(md.FrontLeft, md.BackLeft)),
                         leftEncs,
                         rightEncs,
                         parEncs,
@@ -99,9 +93,8 @@ public final class TuningOpModes {
                         md.voltageSensor,
                         () -> new MotorFeedforward(MecanumDrive67.PARAMS.kS,
                                 MecanumDrive67.PARAMS.kV / MecanumDrive67.PARAMS.inPerTick,
-                                MecanumDrive67.PARAMS.kA / MecanumDrive67.PARAMS.inPerTick)
-                );
-            };
+                                MecanumDrive67.PARAMS.kA / MecanumDrive67.PARAMS.inPerTick));
+                return driveView;};
         } else if (DRIVE_CLASS.equals(TankDrive.class)) {
             dvf = hardwareMap -> {
                 TankDrive td = new TankDrive(hardwareMap, new Pose2d(0, 0, 0));
@@ -152,7 +145,7 @@ public final class TuningOpModes {
         manager.register(metaForClass(AngularRampLogger.class), new AngularRampLogger(dvf));
         manager.register(metaForClass(ForwardPushTest.class), new ForwardPushTest(dvf));
         manager.register(metaForClass(ForwardRampLogger.class), new ForwardRampLogger(dvf));
-        manager.register(metaForClass(LateralPushTest.class), new LateralPushTest(dvf));
+        manager.register(metaForClass(ManualFeedbackTuner.class), new ManualFeedbackTuner());
         manager.register(metaForClass(LateralRampLogger.class), new LateralRampLogger(dvf));
         manager.register(metaForClass(ManualFeedforwardTuner.class), new ManualFeedforwardTuner(dvf));
         manager.register(metaForClass(MecanumMotorDirectionDebugger.class), new MecanumMotorDirectionDebugger(dvf));
