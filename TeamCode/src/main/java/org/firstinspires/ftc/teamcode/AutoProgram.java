@@ -30,7 +30,7 @@ public class AutoProgram extends LinearOpMode {
     @Override
     public void runOpMode() {
         Pose2d initialPose = new Pose2d(8.25, 8.5, Math.toRadians(90));
-        MecanumDrive67 drive = new MecanumDrive67(hardwareMap, initialPose);
+        MecanumDrive drive = new MecanumDrive(hardwareMap, initialPose);
 
         IntakeTest intake = new IntakeTest();
         Outtake outtake = new Outtake();

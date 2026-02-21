@@ -40,7 +40,7 @@ import java.util.List;
 import messages.DriveCommandMessage;
 import messages.MecanumCommandMessage;
 
-public class MecanumDrive67 {
+public class MecanumDrive {
     public Pose2d pose = new Pose2d(0, 0, 0);          // current estimated pose — YOU NEED A LOCALIZER TO UPDATE THIS
     public Object localizer;
     public LazyImu lazyImu;
@@ -52,12 +52,12 @@ public class MecanumDrive67 {
     public DcMotorEx BackLeft;
     private IMU imu;
 
-    public MecanumDrive67(HardwareMap hwMap)
+    public MecanumDrive(HardwareMap hwMap)
     {
         init(hwMap);
     }
 
-    public MecanumDrive67(HardwareMap hwMap, Pose2d pose)
+    public MecanumDrive(HardwareMap hwMap, Pose2d pose)
     {
         init(hwMap);
     }

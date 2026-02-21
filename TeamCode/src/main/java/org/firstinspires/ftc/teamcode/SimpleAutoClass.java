@@ -10,7 +10,7 @@ public class SimpleAutoClass extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        MecanumDrive67 drive = new MecanumDrive67(hardwareMap);
+        MecanumDrive drive = new MecanumDrive(hardwareMap);
 
         Outtake out = new Outtake();
 
